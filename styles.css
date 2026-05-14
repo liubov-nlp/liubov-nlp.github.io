@@ -30,6 +30,10 @@ body {
   line-height: 1.6;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -170,6 +174,7 @@ h2,
 h3 {
   line-height: 1.05;
   letter-spacing: 0;
+  overflow-wrap: break-word;
 }
 
 h1 {
@@ -318,6 +323,7 @@ h3 {
 .offer-card,
 .testimonial-card,
 .contact-card {
+  min-width: 0;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
@@ -331,16 +337,50 @@ h3 {
   padding: clamp(1.25rem, 2.5vw, 1.75rem);
 }
 
-.featured-card {
-  border-top: 5px solid var(--coral);
+.premium-card {
+  border-top: 5px solid var(--gold);
+  box-shadow: 0 18px 52px rgba(19, 32, 51, 0.11);
+}
+
+.offer-topline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 0.35rem;
 }
 
 .offer-kicker {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0;
   color: var(--blue);
   font-size: 0.78rem;
   font-weight: 850;
   text-transform: uppercase;
+}
+
+.offer-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0.28rem 0.55rem;
+  border: 1px solid rgba(240, 188, 85, 0.72);
+  border-radius: 999px;
+  background: #fff8e8;
+  color: var(--blue-deep);
+  font-size: 0.76rem;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.offer-body {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.offer-body p {
+  margin-bottom: 0;
 }
 
 .offer-card ul {
@@ -362,10 +402,19 @@ h3 {
   font-weight: 850;
 }
 
-.text-link {
-  color: var(--coral-deep);
-  font-weight: 850;
-  text-underline-offset: 0.18em;
+.card-cta {
+  min-height: 44px;
+  padding: 0.68rem 0.95rem;
+  font-size: 0.94rem;
+}
+
+.premium-cta {
+  background: var(--blue-deep);
+}
+
+.premium-cta:hover,
+.premium-cta:focus-visible {
+  background: var(--blue);
 }
 
 .cta-band {
@@ -501,8 +550,8 @@ h3 {
     width: 100%;
   }
 
-  .card-footer .text-link {
-    margin-left: auto;
+  .card-cta {
+    width: 100%;
   }
 }
 
@@ -513,6 +562,20 @@ h3 {
 
   .brand {
     white-space: normal;
+  }
+
+  .section {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .offer-topline {
+    display: grid;
+    justify-content: stretch;
+  }
+
+  .offer-badge {
+    justify-self: start;
   }
 
   .nav-links {
