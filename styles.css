@@ -456,14 +456,12 @@ h3 {
 
 .contact-card {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.8rem clamp(1rem, 3vw, 2rem);
+  gap: 0.8rem;
   padding: clamp(1.25rem, 3vw, 2rem);
   font-style: normal;
 }
 
 .contact-card-title {
-  grid-column: 1 / -1;
   margin-bottom: 0.1rem;
   color: var(--ink);
   font-weight: 850;
@@ -472,11 +470,9 @@ h3 {
 .contact-card a {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 0.45rem;
   color: var(--blue);
   font-weight: 800;
-  text-align: center;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
 }
@@ -567,15 +563,6 @@ h3 {
   .offer-grid,
   .testimonial-grid {
     grid-template-columns: 1fr;
-  }
-
-  .contact-card {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-card a {
-    justify-content: flex-start;
-    text-align: left;
   }
 
   .button {
