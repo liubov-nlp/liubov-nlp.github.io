@@ -316,6 +316,32 @@ h3 {
   min-width: 0;
 }
 
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.resource-item {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 100%;
+}
+
+.resource-item .section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.resource-item .section-heading p {
+  margin-bottom: 0;
+}
+
+.resource-item .button {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
 .offer-grid,
 .testimonial-grid {
   display: grid;
@@ -549,6 +575,7 @@ h3 {
   }
 
   .offer-grid,
+  .resource-grid,
   .testimonial-grid {
     grid-template-columns: 1fr;
   }

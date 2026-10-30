@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<meta name="description" content="Take the 5-minute Magical Unique quiz to discover which self-sabotage pattern may be getting in your way." />
+<meta name="theme-color" content="#10243f" />
+<link rel="canonical" href="https://magicalunique.com/pattern-quiz/" />
+<link rel="icon" href="../assets/favicon.png" type="image/png" />
+<title>What's Your Self-Sabotage Pattern?</title>
+<style>
+  :root{
+    --bg:#f3f7fb;
+    --surface:#ffffff;
+    --surface-2:#f7f9fc;
+    --text:#132033;
+    --muted:#536274;
+    --line:#dbe4ed;
+    --blue:#183e6f;
+    --blue-deep:#10243f;
+    --coral:#df765d;
+    --coral-deep:#b94d38;
+    --gold:#b46f18;
+    --gold-bg:#fff8e8;
+    --chip:#eef3f8;
+    --shadow:0 22px 70px rgba(19,32,51,.14);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  body{min-width:320px}
+  button{font:inherit}
+  a{color:var(--blue);text-decoration-color:rgba(24,62,111,.45);text-underline-offset:3px}
+  .wrap{max-width:820px;margin:0 auto;padding:22px 18px 56px}
+  .meta{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:4px 2px 18px;font-size:13px;color:var(--muted);font-weight:700}
+  .brand-link{display:inline-flex;align-items:center;gap:9px;color:var(--blue-deep);text-decoration:none}
+  .brand-link img{width:34px;height:34px}
+  .meta strong{color:var(--blue-deep);font-size:15px}
+  .meta .time{background:var(--surface);border:1px solid var(--line);padding:7px 10px;border-radius:8px;color:var(--text)}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);overflow:hidden}
+  .card-inner{padding:36px 32px 32px}
+  h1{font-size:52px;line-height:1.02;letter-spacing:0;margin:10px 0 16px;font-weight:900;word-break:normal;overflow-wrap:normal;hyphens:none}
+  h1 em{font-style:normal;font-weight:900;color:var(--blue)}
+  h2{font-size:34px;line-height:1.08;letter-spacing:0;margin:0 0 10px;font-weight:850}
+  h3{font-size:15px;margin:0 0 6px;letter-spacing:.01em}
+  p{line-height:1.65;color:var(--muted);font-size:16px}
+  p strong{color:var(--text)}
+  .eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:850;color:var(--coral-deep);margin:0}
+  .lead{font-size:18px;line-height:1.6;color:var(--text)}
+  .intro-copy p{margin:0 0 14px}
+  .intro-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;margin-top:24px}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:18px}
+  .note p{margin:0;font-size:15px}
+  .note p + p{margin-top:10px}
+  .patterns-list{display:flex;flex-direction:column;gap:10px}
+  .pattern-chip{display:flex;gap:12px;align-items:flex-start;background:var(--chip);border-radius:8px;padding:12px 13px}
+  .pattern-chip b{width:28px;height:28px;flex:0 0 28px;display:grid;place-items:center;border-radius:50%;background:var(--surface);border:1px solid var(--line);font-size:13px}
+  .pattern-chip span{font-size:14px;line-height:1.4}
+  .pattern-chip span strong{display:block;font-size:14px;color:var(--text)}
+  .pattern-chip span small{color:var(--muted);font-size:13px;line-height:1.4;display:block}
+  .btn{appearance:none;border:2px solid transparent;cursor:pointer;border-radius:8px;padding:14px 20px;font-weight:850;font-size:15px;line-height:1.1;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;transition:background 160ms ease,border-color 160ms ease,color 160ms ease,transform 160ms ease}
+  .btn:hover,.btn:focus-visible{transform:translateY(-1px)}
+  .btn-primary{background:var(--coral-deep);color:#fff;flex:1;min-width:200px}
+  .btn-primary:hover,.btn-primary:focus-visible{background:var(--blue-deep)}
+  .btn-secondary{background:transparent;color:var(--text);border:1px solid var(--line)}
+  .btn-ghost{background:transparent;color:var(--muted);border:1px solid transparent}
+  .btn[disabled]{opacity:.45;cursor:not-allowed}
+  .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .micro{font-size:13px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.5}
+  .progress-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:14px}
+  .progress-head span{font-size:13px;font-weight:700;color:var(--muted)}
+  .progress-head span strong{color:var(--text)}
+  .bar{height:8px;background:var(--chip);border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+  .bar i{display:block;height:100%;background:var(--blue);border-radius:999px;transition:width .35s ease}
+  @media(prefers-reduced-motion: reduce){.bar i{transition:none}}
+  .q-number{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--coral-deep);font-weight:850}
+  .q-text{font-size:30px;line-height:1.15;margin:10px 0 20px;font-weight:850}
+  .options{display:grid;gap:10px}
+  .option{width:100%;text-align:left;display:flex;gap:14px;align-items:flex-start;background:var(--surface-2);border:1.5px solid var(--line);border-radius:8px;padding:16px;cursor:pointer;font-family:inherit;color:var(--text)}
+  .option:hover,.option:focus-visible{border-color:var(--blue)}
+  .option.selected{border-color:var(--blue);background:var(--chip);box-shadow:0 0 0 3px rgba(24,62,111,.14)}
+  .option .letter{width:32px;height:32px;flex:0 0 32px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line);font-weight:800;font-size:14px;margin-top:1px}
+  .option.selected .letter{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .option .text{font-size:15.5px;line-height:1.5;font-weight:600}
+  .quiz-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:20px}
+  .quiz-nav .hint{font-size:13px;color:var(--muted)}
+  .score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+  .score-box{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:14px}
+  .score-box label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:850;color:var(--muted);display:block;margin-bottom:6px;line-height:1.3;min-height:28px}
+  .score-box .num{font-size:32px;line-height:1;font-weight:850}
+  .score-box .bar{margin-top:10px;height:6px}
+  .result-card{border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:16px}
+  .result-head{padding:20px 20px 16px;background:var(--gold-bg);border-bottom:1px solid var(--line)}
+  .result-head .tag{display:inline-flex;background:var(--surface);border:1px solid var(--line);padding:6px 9px;border-radius:8px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+  .result-head h3{font-size:30px;line-height:1.05;margin:12px 0 6px}
+  .result-head p{margin:0;font-size:15px;color:var(--text);font-weight:600}
+  .result-body{padding:20px}
+  .result-body section + section{margin-top:18px;padding-top:18px;border-top:1px dashed var(--line)}
+  .result-body h4{margin:0 0 8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--coral-deep)}
+  .result-body p{margin:0 0 10px;font-size:15.5px;color:var(--text);line-height:1.65}
+  .result-body p:last-child{margin-bottom:0}
+  .result-body p.muted{color:var(--muted)}
+  .familiar{font-size:22px !important;font-style:italic;font-weight:700}
+  .try-box{background:var(--chip);border-radius:8px;padding:14px 15px}
+  .try-box p{font-size:15px}
+  .after-result{margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+  .after-result h3{font-size:28px;line-height:1.1;margin:0 0 10px}
+  .offers{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+  .offer-card{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:18px}
+  .offer-card h4{font-size:22px;margin:0 0 8px;line-height:1.1}
+  .offer-card p{font-size:14.5px;margin:0 0 10px}
+  .offer-card p:last-child{margin-bottom:0}
+  .closing{background:var(--blue-deep);color:#fff;border-radius:8px;padding:22px;margin-top:20px}
+  .closing h3{font-size:28px;margin:0 0 8px;color:inherit}
+  .closing p{color:rgba(255,255,255,.92);margin:0 0 16px;font-size:15.5px}
+  .closing .btn{background:#fff;color:var(--blue-deep);width:100%}
+  .closing .btn:hover,.closing .btn:focus-visible{background:var(--gold-bg)}
+  .footer-note{margin-top:18px;text-align:center;font-size:13px;color:var(--muted);line-height:1.6;padding:0 8px}
+  .hidden{display:none !important}
+  .fade{animation:fade .28s ease both}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion: reduce){.fade{animation:none}}
+  :focus-visible{outline:3px solid #f0bc55;outline-offset:3px}
+  @media(max-width:640px){
+    .intro-grid,.offers{grid-template-columns:1fr}
+    .quiz-nav{align-items:stretch;flex-wrap:wrap}
+    .quiz-nav .hint{order:-1;width:100%}
+  }
+  @media(max-width:560px){
+    .wrap{padding:14px 12px 36px}
+    .card-inner{padding:24px 18px 22px}
+    h1{font-size:38px}
+    h2{font-size:29px}
+    .q-text{font-size:25px}
+    .score-grid{grid-template-columns:repeat(2,1fr)}
+    .quiz-nav .btn{flex:1;min-width:120px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta">
+    <a class="brand-link" href="../" aria-label="Back to Magical Unique home">
+      <img src="../assets/crown.png" alt="" width="34" height="34" />
+      <strong>Magical Unique</strong>
+    </a>
+    <span class="time">○ 5-minute quiz</span>
+  </div>
+
+  <!-- INTRO -->
+  <section id="view-intro" class="card">
+    <div class="card-inner">
+      <p class="eyebrow">A 5-minute self-reflection quiz</p>
+      <h1>What's Your <em>Self-Sabotage</em> Pattern?</h1>
+      <p class="lead">A 5-minute quiz for people who know what to do—but still find themselves getting in their own way.</p>
+      <div class="intro-copy">
+        <p>You've read the books, taken courses, or done some work on yourself. You can explain your patterns. Sometimes you even catch yourself in the middle of one.</p>
+        <p>And yet… here you are, doing that familiar thing again.</p>
+        <p>Let's get curious about what happens between knowing what you want and actually following through.</p>
+        <p>You'll discover which of four patterns feels most familiar, try one small step, and learn how coaching could help you move forward.</p>
+      </div>
+
+      <div class="intro-grid">
+        <div class="note">
+          <h3>Before you begin</h3>
+          <p>Think about one area where you want something to change: relationships, work, personal goals, or speaking up for yourself.</p>
+          <p>Keep that area in mind as you answer. Choose one answer per question, based on what you've actually done over the past three months.</p>
+          <p>Pick the closest fit. No answer needs to describe you perfectly, and there are no “good” answers to collect here.</p>
+          <p>This is a self-reflection quiz, not a diagnosis or a validated psychological assessment. The names describe patterns—not who you are.</p>
+          <div class="actions">
+            <button class="btn btn-primary" onclick="startQuiz()">Start the quiz →</button>
+          </div>
+        </div>
+        <div>
+          <h3 style="margin-bottom:10px">The four patterns</h3>
+          <div class="patterns-list">
+            <div class="pattern-chip"><b>A</b><span><strong>The Perfectionist Procrastinator</strong><small>Preparing, perfecting, and waiting to feel ready</small></span></div>
+            <div class="pattern-chip"><b>B</b><span><strong>The Over-Giver</strong><small>Everyone else first, your own goals last</small></span></div>
+            <div class="pattern-chip"><b>C</b><span><strong>The Visibility Avoider</strong><small>Holding back when it's time to speak up or be seen</small></span></div>
+            <div class="pattern-chip"><b>D</b><span><strong>The Start-Stop Saboteur</strong><small>Starting strong, then losing momentum</small></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="view-quiz" class="card hidden">
+    <div class="card-inner">
+      <div class="progress-head">
+        <span>Question <strong id="q-current">1</strong> of 10</span>
+        <span id="q-pct">10%</span>
+      </div>
+      <div class="bar" aria-hidden="true"><i id="progress-bar" style="width:10%"></i></div>
+
+      <div id="question-wrap" class="fade" style="margin-top:22px">
+        <div class="q-number" id="q-label">Question 1</div>
+        <div class="q-text" id="q-text"></div>
+        <div class="options" id="options"></div>
+      </div>
+
+      <div class="quiz-nav">
+        <button class="btn btn-secondary" id="btn-back" onclick="prevQuestion()">← Back</button>
+        <span class="hint" id="nav-hint">Choose the closest fit, then Next</span>
+        <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()" style="flex:0 0 auto;min-width:110px" disabled>Next →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="view-result" class="card hidden">
+    <div class="card-inner">
+      <p class="eyebrow">Find your result</p>
+      <h2 id="result-title">Your pattern is in</h2>
+      <p id="result-subtitle" style="margin-top:2px"></p>
+
+      <div class="score-grid" id="score-grid"></div>
+      <p style="font-size:13.5px;margin:0">Count your A, B, C, and D answers. Your most frequent letter is the pattern to explore first. If two or more letters tie for the highest score, read those results. A close second may also feel familiar.</p>
+      <p style="font-size:13.5px;margin:8px 0 0">This isn't a permanent label. You may notice different patterns in different situations.</p>
+
+      <div id="result-cards"></div>
+
+      <div class="after-result">
+        <h3>What if you already understand your pattern?</h3>
+        <p>You may be reading your result and thinking, “Yes. I know I do this.”</p>
+        <p>The next question is: What would help you respond differently when it happens again?</p>
+        <p>That's something we can work on together.</p>
+
+        <div class="offers">
+          <div class="offer-card">
+            <h4>The Breakthrough Experience</h4>
+            <p>A focused, intensive coaching process for exploring a recurring issue and working with the beliefs, emotional responses, and inner conflicts connected to it.</p>
+            <p>We begin by understanding your experience and getting specific about what you want to change. Using NLP and the techniques I'm trained in, we work toward that change, explore how you respond differently, and plan how you'll apply it in everyday life.</p>
+            <p>The experience includes follow-up support to help you put the work into practice.</p>
+            <p>This may interest you if you keep meeting the same obstacle and want dedicated time to work on what's connected to it.</p>
+          </div>
+          <div class="offer-card">
+            <h4>Eight-Week Momentum Coaching</h4>
+            <p>Ongoing private coaching for making progress toward something that matters to you.</p>
+            <p>Across eight weeks, we work with the situations you're actually facing: decisions, boundaries, setbacks, difficult conversations, and the moments when you're tempted to return to an old pattern.</p>
+            <p>We explore what gets in the way, work on different responses, and adjust your next steps as you learn.</p>
+            <p>This may interest you if you want continued support while putting changes into practice.</p>
+          </div>
+        </div>
+
+        <p style="margin-top:16px"><strong>You don't have to choose from a quiz result.</strong></p>
+        <p>Any of these patterns could be explored through either approach. Your situation, goals, and the kind of support you want help us decide what fits.</p>
+      </div>
+
+      <div class="closing">
+        <h3>Ready to explore your next step?</h3>
+        <p>Think of one recent moment when your result showed up.</p>
+        <p>What did you want to do—and what happened instead?</p>
+        <p>Bring that example to a free 30-minute discovery call with me. We'll talk about what you want to change, what you've already tried, and whether the Breakthrough Experience or Eight-Week Momentum Coaching could be a useful next step.</p>
+        <a class="btn" href="https://calendly.com/liubov-lomonosova/free-30-minute-call" target="_blank" rel="noopener">Book My Free Discovery Call →</a>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-secondary" onclick="retake()">Retake the quiz</button>
+        <button class="btn btn-ghost" onclick="showAllPatterns()">See all 4 patterns</button>
+      </div>
+      <div id="all-patterns" class="hidden" style="margin-top:10px"></div>
+
+      <p class="footer-note">Magical Unique — NLP, mindset &amp; subconscious patterns. This quiz is for self-reflection only, not a diagnosis.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+const QUESTIONS = [
+  { q:"You want to make a change that matters to you. What tends to get in the way?", options:[
+    {k:"A", t:"I keep preparing because I don't feel ready to begin."},
+    {k:"B", t:"Someone else needs something, and my plans move to later."},
+    {k:"C", t:"I hold back when the next step means being seen or speaking up."},
+    {k:"D", t:"I get started, but struggle to keep going once the initial excitement fades."}
+  ]},
+  { q:"You've set aside time for your goal. What are you most likely to do?", options:[
+    {k:"A", t:"Research a little more so I can make sure I do it right."},
+    {k:"B", t:"Use that time to help someone else."},
+    {k:"C", t:"Do the preparation, but delay sending, sharing, or asking."},
+    {k:"D", t:"Skip what I had planned because my recent efforts haven't brought the results I wanted."}
+  ]},
+  { q:"Which thought sounds most familiar?", options:[
+    {k:"A", t:"“One more course, one more plan, and then I'll be ready.”"},
+    {k:"B", t:"“Let me take care of everyone else first.”"},
+    {k:"C", t:"“What will people think if I put myself out there?”"},
+    {k:"D", t:"“I've been trying. Why keep going if nothing seems to be changing?”"}
+  ]},
+  { q:"An opportunity comes along that you actually want. What tends to happen?", options:[
+    {k:"A", t:"I focus on the skills or qualifications I still need."},
+    {k:"B", t:"I worry that saying yes would disappoint or inconvenience someone."},
+    {k:"C", t:"I hope someone will choose me so I don't have to put myself forward."},
+    {k:"D", t:"I jump in, but later lose momentum when it becomes harder than I expected."}
+  ]},
+  { q:"Think of something important you've put off recently. What did you do instead?", options:[
+    {k:"A", t:"Planned, researched, or revised it again."},
+    {k:"B", t:"Took care of someone else's priorities."},
+    {k:"C", t:"Kept busy with tasks that didn't involve a conversation, request, or possible judgment."},
+    {k:"D", t:"Switched to something new after losing enthusiasm for what I had started."}
+  ]},
+  { q:"When someone questions a choice that matters to you, what do you tend to do?", options:[
+    {k:"A", t:"Overthink it and search for more proof that I'm making the right choice."},
+    {k:"B", t:"Change my plans to keep them happy, even if it costs me something."},
+    {k:"C", t:"Keep my opinion to myself rather than risk disagreement."},
+    {k:"D", t:"Lose confidence in the direction I had chosen and stop following through."}
+  ]},
+  { q:"Looking back at your personal development work, what feels most familiar?", options:[
+    {k:"A", t:"I've learned a lot, but keep looking for another answer before I act."},
+    {k:"B", t:"I understand boundaries, but still give away the time and energy I meant to keep for myself."},
+    {k:"C", t:"I know I have something to offer, but still hesitate to speak up or be seen."},
+    {k:"D", t:"I make changes for a while, then return to the same behavior."}
+  ]},
+  { q:"When you want something from another person, what usually happens?", options:[
+    {k:"A", t:"I rehearse the request, waiting until I can say it just right."},
+    {k:"B", t:"I make my request smaller so it's easier for them—even if it no longer meets my needs."},
+    {k:"C", t:"I hint, stay silent, or hope they will notice."},
+    {k:"D", t:"I ask once, but give up if the next steps take more effort or time than I expected."}
+  ]},
+  { q:"When progress is slower than you hoped, what's your usual response?", options:[
+    {k:"A", t:"Decide I need a better plan before doing anything else."},
+    {k:"B", t:"Put my goal aside because other people's needs feel more urgent."},
+    {k:"C", t:"Stop talking about it because I don't want people asking how it's going."},
+    {k:"D", t:"Stop doing what I had committed to, even though the goal still matters to me."}
+  ]},
+  { q:"Which unfinished step feels most familiar right now?", options:[
+    {k:"A", t:"Something I keep preparing for but haven't started."},
+    {k:"B", t:"Something I keep postponing to make room for other people."},
+    {k:"C", t:"Something I want to say, share, or ask for—but keep holding back."},
+    {k:"D", t:"Something I started with enthusiasm but haven't continued."}
+  ]}
+];
+
+const PATTERNS = {
+  A:{
+    letter:"A", name:"The Perfectionist Procrastinator", short:"Perfectionist Procrastinator",
+    headline:"Your next step keeps waiting for a better version of you.",
+    body:"You care about doing things well. You're willing to learn and put in the effort.\n\nBut sometimes preparation becomes the place where you stay.\n\nYou rewrite the message. Research another approach. Finish a course and find another one. Meanwhile, the thing you actually want to do keeps waiting.",
+    familiar:"“I'm almost ready.”",
+    underneath:"Taking action means facing an outcome you can't fully control. Preparing can postpone the possibility of making a mistake, receiving criticism, or feeling disappointed.\n\nThe question is whether more preparation is helping you move—or helping you delay.",
+    tryStep:"Choose one thing you've been preparing for.\n\nAsk: “What do I genuinely need before I can take the next step?”\n\nIf you already have it, give yourself ten minutes to act. Send the question, book the appointment, or begin the first part.\n\nNotice what happens when you let yourself start before you feel completely ready.",
+    helps:"We could explore the standards you keep trying to meet, what making a mistake means to you, and how to take action without needing complete certainty first."
+  },
+  B:{
+    letter:"B", name:"The Over-Giver", short:"Over-Giver",
+    headline:"Everyone can count on you. Your own goals keep getting rescheduled.",
+    body:"You're thoughtful, reliable, and good at noticing what people need.\n\nBut by the time everyone else is taken care of, there may be very little left for you.\n\nYou might agree before checking your schedule, offer more than you can comfortably give, or feel guilty when you protect time for something you want.",
+    familiar:"“I'll get to mine afterward.”",
+    underneath:"Saying no may bring up worries about disappointing someone, seeming selfish, or being less appreciated.\n\nSometimes you say yes because you want to. Sometimes you say yes because dealing with someone's reaction feels harder.\n\nLearning to notice that difference is a useful place to begin.",
+    tryStep:"Before your next automatic yes, say:\n\n“Let me check and get back to you.”\n\nUse that pause to ask: “Do I want to do this? Do I have room for it? What would I be giving up?”\n\nThen give an answer that takes your needs into account too.",
+    helps:"We could explore the guilt or beliefs that make boundaries difficult, then work on expressing your needs and keeping commitments to yourself."
+  },
+  C:{
+    letter:"C", name:"The Visibility Avoider", short:"Visibility Avoider",
+    headline:"You have something to say. People don't always get to hear it.",
+    body:"You may know your opinion, want an opportunity, or have work you're proud of.\n\nBut when it's time to speak, share, or ask, you hesitate.\n\nYou soften the request. Downplay the achievement. Wait to be noticed. Later, you think about what you wish you had said.\n\nThis can happen in relationships, at work, or around personal goals. If you run a business, it might also show up when sharing your work or inviting someone to become a client.",
+    familiar:"“Maybe I'll say something next time.”",
+    underneath:"Being seen means people can respond. You may expect criticism, rejection, or uncomfortable attention.\n\nHolding back can bring short-term relief while leaving something important unexpressed.",
+    tryStep:"Choose one small preference or request you've been keeping to yourself.\n\nWrite it in one clear sentence:\n\n“I would like…”\n\nChoose an appropriate, low-stakes situation and say it without talking yourself out of it afterward.\n\nCompare what you expected with what actually happened.",
+    helps:"We could explore what you expect will happen when you're seen, work with the beliefs and feelings connected to that expectation, and practise expressing yourself more directly."
+  },
+  D:{
+    letter:"D", name:"The Start-Stop Saboteur", short:"Start-Stop Saboteur",
+    headline:"You know how to begin. Continuing is where things get complicated.",
+    body:"You can feel excited, take action, and make real progress.\n\nThen results slow down. Life gets busy. The effort starts feeling bigger than the reward. Or things go well, and you begin worrying about keeping them that way.\n\nYou miss one step, then another. Eventually, you're looking for a fresh start.",
+    familiar:"“This time, I'll stick with it.”",
+    underneath:"You may be relying on excitement or quick results to keep going. You might turn a setback into a conclusion about yourself. Or your plan may simply demand more than you can sustain.\n\nStopping isn't automatically self-sabotage. The useful question is what happens when you repeatedly abandon something you still want.",
+    tryStep:"Think of one goal you still care about.\n\nFinish this sentence:\n\n“I tend to stop when…”\n\nThen choose a smaller version of the action you can realistically keep doing when motivation is low.\n\nDecide how you'll return after a missed day, so one interruption doesn't have to become another restart.",
+    helps:"We could explore what happens when progress slows or pressure increases, work with the beliefs connected to setbacks, and build a way of following through that fits your life."
+  }
+};
+
+let current = 0;
+let answers = Array(QUESTIONS.length).fill(null);
+
+function showView(id){
+  ["view-intro","view-quiz","view-result"].forEach(function(v){document.getElementById(v).classList.add("hidden");});
+  document.getElementById(id).classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function startQuiz(){
+  current=0; answers = Array(QUESTIONS.length).fill(null);
+  showView("view-quiz"); renderQuestion();
+}
+function escapeHtml(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function paras(text){
+  return text.split("\n\n").map(function(p){return "<p>"+escapeHtml(p)+"</p>";}).join("");
+}
+function renderQuestion(){
+  const q = QUESTIONS[current];
+  document.getElementById("q-current").textContent = current+1;
+  const pct = Math.round(((current+1)/QUESTIONS.length)*100);
+  document.getElementById("q-pct").textContent = pct+"%";
+  document.getElementById("progress-bar").style.width = pct+"%";
+  document.getElementById("q-label").textContent = "Question "+(current+1)+" of 10";
+  document.getElementById("q-text").textContent = q.q;
+  const wrap = document.getElementById("options");
+  wrap.innerHTML="";
+  q.options.forEach(function(opt){
+    const btn=document.createElement("button");
+    btn.className="option"+(answers[current]===opt.k?" selected":"");
+    btn.setAttribute("aria-pressed", answers[current]===opt.k ? "true":"false");
+    btn.innerHTML='<span class="letter">'+opt.k+'</span><span class="text">'+escapeHtml(opt.t)+'</span>';
+    btn.onclick=function(){selectAnswer(opt.k);};
+    wrap.appendChild(btn);
+  });
+  document.getElementById("btn-back").disabled = current===0;
+  document.getElementById("btn-back").style.opacity = current===0 ? .45 : 1;
+  const nextBtn=document.getElementById("btn-next");
+  nextBtn.disabled = !answers[current];
+  nextBtn.textContent = current===QUESTIONS.length-1 ? "See my result →" : "Next →";
+  document.getElementById("nav-hint").textContent = answers[current] ? "Tap Next, or tap another answer to change it" : "Choose the closest fit, then Next";
+  const qw=document.getElementById("question-wrap");
+  qw.classList.remove("fade"); void qw.offsetWidth; qw.classList.add("fade");
+}
+function selectAnswer(k){
+  answers[current]=k;
+  renderQuestion();
+}
+function nextQuestion(){
+  if(!answers[current]) return;
+  if(current < QUESTIONS.length-1){ current++; renderQuestion(); }
+  else { showResult(); }
+}
+function prevQuestion(){
+  if(current>0){ current--; renderQuestion(); }
+}
+function computeCounts(){
+  const c={A:0,B:0,C:0,D:0};
+  answers.forEach(function(a){ if(a) c[a]++; });
+  return c;
+}
+function patternCard(key, label){
+  const p=PATTERNS[key];
+  return '<article class="result-card">'+
+    '<div class="result-head"><span class="tag">'+label+' · '+p.letter+'</span><h3>'+p.name+'</h3><p>'+escapeHtml(p.headline)+'</p></div>'+
+    '<div class="result-body">'+
+      '<section>'+paras(p.body)+'</section>'+
+      '<section><h4>Your familiar line</h4><p class="familiar">'+escapeHtml(p.familiar)+'</p></section>'+
+      '<section><h4>What might be underneath it?</h4>'+paras(p.underneath)+'</section>'+
+      '<section><h4>Try this today</h4><div class="try-box">'+paras(p.tryStep)+'</div></section>'+
+      '<section><h4>How coaching could help</h4><p class="muted">'+escapeHtml(p.helps)+'</p></section>'+
+    '</div></article>';
+}
+function showResult(){
+  const counts=computeCounts();
+  const entries=Object.entries(counts).sort(function(a,b){return b[1]-a[1];});
+  const max=entries[0][1];
+  const primaryKeys=entries.filter(function(e){return e[1]===max;}).map(function(e){return e[0];});
+
+  const grid=document.getElementById("score-grid");
+  grid.innerHTML = ["A","B","C","D"].map(function(k){
+    const pct = (counts[k]/10)*100;
+    return '<div class="score-box"><label>'+PATTERNS[k].short+'</label><div class="num">'+counts[k]+'<span style="font-size:16px;color:var(--muted)"> / 10</span></div><div class="bar"><i style="width:'+pct+'%"></i></div></div>';
+  }).join("");
+
+  const titleEl=document.getElementById("result-title");
+  const subEl=document.getElementById("result-subtitle");
+  if(primaryKeys.length===1){
+    titleEl.textContent = PATTERNS[primaryKeys[0]].name;
+    subEl.textContent = "This is the pattern you selected most often in the area you chose. Start here.";
+  } else {
+    titleEl.textContent = primaryKeys.map(function(k){return PATTERNS[k].name;}).join("  +  ");
+    subEl.textContent = "You tied between "+primaryKeys.length+" patterns — read both as your result. Your answers may reflect a combination of patterns.";
+  }
+
+  let html="";
+  primaryKeys.forEach(function(k){ html+=patternCard(k, primaryKeys.length>1 ? "Tied result" : "Your result"); });
+  document.getElementById("result-cards").innerHTML=html;
+  document.getElementById("all-patterns").classList.add("hidden");
+  document.getElementById("all-patterns").innerHTML="";
+  showView("view-result");
+}
+function showAllPatterns(){
+  const el=document.getElementById("all-patterns");
+  if(!el.classList.contains("hidden")){ el.classList.add("hidden"); return; }
+  const counts=computeCounts();
+  let html='<h3 style="margin:18px 0 6px;font-family:\'Cormorant Garamond\',serif;font-size:24px">All four patterns</h3><p style="margin:0 0 6px">For comparison — your scores are shown in the grid above.</p>';
+  ["A","B","C","D"].forEach(function(k){ html+=patternCard(k, "Pattern "+k+" · "+counts[k]+" / 10"); });
+  el.innerHTML=html;
+  el.classList.remove("hidden");
+  el.scrollIntoView({behavior:"smooth", block:"start"});
+}
+function retake(){
+  document.getElementById("all-patterns").classList.add("hidden");
+  startQuiz();
+}
+</script>
+</body>
+</html>
