@@ -123,6 +123,8 @@ a {
   border-radius: 8px;
   background: var(--coral-deep);
   color: #fff;
+  line-height: 1.2;
+  text-align: center;
 }
 
 .nav-links .nav-cta:hover,
@@ -132,14 +134,13 @@ a {
 }
 
 .hero {
+  --hero-overlay: linear-gradient(90deg, rgba(16, 36, 63, 0.9), rgba(16, 36, 63, 0.58) 50%, rgba(16, 36, 63, 0.22));
   position: relative;
   min-height: 64svh;
   display: grid;
   align-items: center;
-  padding: clamp(4rem, 8vw, 5.75rem) clamp(1rem, 4vw, 4rem);
-  background:
-    linear-gradient(90deg, rgba(16, 36, 63, 0.9), rgba(16, 36, 63, 0.58) 50%, rgba(16, 36, 63, 0.22)),
-    url("assets/hero.jpg") center / cover no-repeat;
+  padding: clamp(3rem, 5vw, 4.5rem) clamp(1rem, 4vw, 4rem);
+  background: var(--hero-overlay), url("assets/hero.jpg") center / cover no-repeat;
   color: #fff;
 }
 
@@ -178,9 +179,8 @@ h3 {
 }
 
 h1 {
-  max-width: 11ch;
   margin-bottom: 1rem;
-  font-size: clamp(3.25rem, 8vw, 6rem);
+  font-size: clamp(3rem, 5.25vw, 4.5rem);
   font-weight: 900;
 }
 
@@ -188,6 +188,7 @@ h1 {
   word-break: normal;
   overflow-wrap: normal;
   hyphens: none;
+  text-wrap: balance;
 }
 
 h2 {
@@ -209,7 +210,12 @@ h3 {
   font-size: clamp(1.04rem, 1.5vw, 1.22rem);
 }
 
-.hero-actions,
+.hero-note {
+  max-width: 55ch;
+  margin: 0.85rem 0 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .card-footer {
   display: flex;
   align-items: center;
@@ -248,14 +254,14 @@ h3 {
 }
 
 .button-secondary {
-  border-color: rgba(255, 255, 255, 0.78);
-  color: #fff;
+  border-color: var(--blue);
+  color: var(--blue);
 }
 
 .button-secondary:hover,
 .button-secondary:focus-visible {
-  background: #fff;
-  color: var(--blue-deep);
+  background: var(--blue);
+  color: #fff;
 }
 
 .button-light {
@@ -468,7 +474,7 @@ h3 {
 }
 
 .testimonial-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .testimonial-card {
@@ -563,15 +569,15 @@ h3 {
   }
 
   .hero {
+    --hero-overlay: linear-gradient(rgba(16, 36, 63, 0.72), rgba(16, 36, 63, 0.82));
     min-height: auto;
-    padding-top: 3rem;
-    padding-bottom: 4rem;
+    padding-top: 2.25rem;
+    padding-bottom: 3rem;
     background-position: 58% center;
   }
 
   .hero h1 {
-    max-width: 12.5ch;
-    font-size: clamp(2.15rem, 10vw, 3rem);
+    font-size: clamp(2.15rem, 8vw, 3rem);
   }
 
   .offer-grid,
@@ -613,10 +619,48 @@ h3 {
   }
 
   .nav-links {
-    gap: 0.2rem 0.8rem;
+    gap: 0.2rem 0.65rem;
   }
 
   .nav-links a {
     min-height: 34px;
+  }
+
+  .hero-lede {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header {
+    gap: 0.45rem;
+    padding-block: 0.65rem;
+  }
+
+  .nav-links {
+    column-gap: 0.4rem;
+    font-size: 0.875rem;
+  }
+
+  .nav-links .nav-cta,
+  .hero .button,
+  .contact-section .button {
+    padding-inline: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding-top: 1.25rem;
+  }
+
+  .hero h1 {
+    margin-bottom: 0.75rem;
+    font-size: 2rem;
+  }
+
+  .hero-lede {
+    font-size: 0.95rem;
   }
 }
